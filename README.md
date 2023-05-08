@@ -28,10 +28,14 @@ project 에 포함시킬 기능 설명
 
 팀소개 및 팀원이 맡은 역할
 
+![image](https://user-images.githubusercontent.com/130723603/236854940-9b631f0c-1cdd-416e-a43d-7769b5092aac.png)
+
 - 한동대학교 노희수(22200250)
   - 프로그램 구상& 작성
   - 위키 작성/ 수정
   - 자료 수집
+
+![image](https://user-images.githubusercontent.com/130723603/236855029-b23a5bc1-0057-4c2a-9c81-d55074d88493.png)
 
 - 한동대학교 류다은(22200252)
   - 프로그램 구상& 작성
