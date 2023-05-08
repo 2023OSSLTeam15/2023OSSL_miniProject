@@ -1,4 +1,4 @@
-# 한동대학생 교회 출석 현황 확인 어플
+# 한동대학생 교회 출석 현황 확인 프로그램
 
 ![image](https://user-images.githubusercontent.com/130723603/236840361-b502ef0d-a3c9-404d-9c91-e9087c930d00.png)
 
