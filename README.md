@@ -26,10 +26,7 @@ project 에 포함시킬 기능 설명
 - java
 - HTML, CSS, Javascript
 
-팀소개 및 팀원이 맡은 역할
+<<팀소개 및 팀원이 맡은 역할>>
 
-| ![image](https://user-images.githubusercontent.com/130723603/236850595-ab14e1b3-64c9-4eea-9113-db3a9a56f9c4.png) | ![image](https://user-images.githubusercontent.com/130723603/236850691-bda9b464-4e56-43af-bb6b-59d64f4a4796.png)
- |
-| :----------------------------------------: | :----------------------------------------: |
-| 노희수 | 류다은 | 
-| -   | -  | 
+한동대학교 노희수(22200250)
+한동대학교 류다은(22200252)
