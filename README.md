@@ -1,4 +1,4 @@
-# 한동대학교 학생들의 교회 출석 현황을 확인할 수 있는 어플
+# 한동대학생 교회 출석 현황 확인 어플
 
 ![image](https://user-images.githubusercontent.com/130723603/236840361-b502ef0d-a3c9-404d-9c91-e9087c930d00.png)
 
@@ -28,4 +28,8 @@ project 에 포함시킬 기능 설명
 
 팀소개 및 팀원이 맡은 역할
 
--
+| ![image](https://user-images.githubusercontent.com/130723603/236850595-ab14e1b3-64c9-4eea-9113-db3a9a56f9c4.png) | ![image](https://user-images.githubusercontent.com/130723603/236850691-bda9b464-4e56-43af-bb6b-59d64f4a4796.png)
+ |
+| :----------------------------------------: | :----------------------------------------: |
+| 노희수 | 류다은 | 
+| -   | -  | 
