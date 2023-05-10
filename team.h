@@ -10,7 +10,7 @@ typedef struct{
     char time[4];
 
     int count;
-    bool isSun;
+    int isSun;
 }Church;
 
 int selectMenu();
@@ -27,5 +27,5 @@ int loadBoard(Church *c[]);
 int attendance();
 void thisWeek();
 void thisMonth();
-bool isSunday();
+int isSunday();
 void recommendCurch(Church *c[], int count);
