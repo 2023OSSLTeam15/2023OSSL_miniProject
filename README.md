@@ -23,7 +23,7 @@ project 에 포함시킬 기능 설명
 
 개발환경 및 언어
 
-- java
+- 
 - HTML, CSS, Javascript
 
 팀소개 및 팀원이 맡은 역할
