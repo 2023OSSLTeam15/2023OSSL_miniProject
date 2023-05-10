@@ -4,14 +4,6 @@
 
 #define MAX 50
 
-typedef struct church{
-    char name[50];
-    char adress[50];
-    char time[4];
-
-    int count;
-} Score;
-
 int main(void){
     int menu;
 
@@ -63,3 +55,4 @@ int selectMenu(){
     scanf("%d", &menu);
     return menu;
 }
+
