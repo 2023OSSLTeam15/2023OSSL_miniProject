@@ -53,6 +53,9 @@ int main(void){
         else if (menu == 7){}
         else if (menu == 8){}
         else if (menu == 9){}
+        else if (menu == 10){
+            attendance(c, count);
+        }
     }
     
     printf("이용해 주셔서 감사합니다. 좋은 하루 되세요!\n");
