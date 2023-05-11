@@ -6,12 +6,12 @@
 
 typedef struct{
     char name[50];
-    char adress[50];
-    char time[4];
+    char address[50];
+    char time[10];
 
     int count;
     int isSun;
-}Church;
+} Church;
 
 int selectMenu();
 
@@ -30,4 +30,4 @@ int attendance();
 void thisWeek();
 void thisMonth();
 int isSunday();
-void recommendCurch(Church *c[], int count);
+void recommendChurch(Church *c[], int count);
