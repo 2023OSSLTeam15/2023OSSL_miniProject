@@ -42,24 +42,10 @@ int main(void){
             updateBoard(c[no-1]);
         }
         else if (menu == 4){
-            int no=selectDataNo(c, index);
-            if(no == 0){
-                printf("=> 취소됨!\n");
-                continue;
-            }
-            int deleteok;
-            printf("정말 삭제하시겠습니까?(삭제: 1)");
-            scanf("%d", &deleteok);
-            if(deleteok==1){
-                if(c[no-1]) free(c[no-1]);
-                c[no-1] = NULL;
-                count--;
-                printf("삭제됨!\n");
-            }
-            else printf("취소됨!\n");
+            deleteBoard(c, count);
         }
         else if (menu == 5){
-            saveBoard(c, index);
+            saveBoard(c, count);
         }
         else if (menu == 6){
             searchBoard(c, index);

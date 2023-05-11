@@ -63,11 +63,29 @@ int updateBoard(Church *c){
     return 1;
 }
 
-int deleteBoard(Church *c){
-    c->att = -1;
-    strcpy(c->name, "");
+void deleteBoard(Church *c, int count){
+    int number, aNumber;
 
-    printf("=> 삭제되었습니다!\n");
+    listBoard(c, count);
+    printf("삭제할 리스트의 번호를 알려주세요. (취소: 0) ");
+    scanf("%d", &number);
+
+    if (number == 0){
+        return;
+    }
+    else{
+        printf("정말로 삭제하시겠습니까? (삭제: 1 | 취소: 0)");
+        scanf("%d", &aNumber);
+
+        if (aNumber==1){
+            c->att = -1;
+            strcpy(c->name, "");
+            printf(">> 삭제되었습니다!\n");
+        }
+        else{
+            return;
+        }
+    }
 }
 
 void searchBoard(Church **c, int count){
@@ -111,7 +129,7 @@ void saveBoard(Church *c[], int count){
     }
 
     fclose(fp);
-    printf("=> 저장됨!");  
+    printf(">> 저장되었습니다!");  
 }
 
 int loadBoard(Church *c[]){
@@ -123,7 +141,7 @@ int loadBoard(Church *c[]){
     fp = fopen("score.txt", "r");
 
     if (fp == NULL){
-        printf(">> 저장된 파일이 없습니다.\n");
+        printf(">> 저장된 파일이 없습니다. 지금부터 기록을 시작합니다.\n");
     }
     else{
         while(fgets(input, 100, fp) != NULL){
@@ -147,7 +165,7 @@ int loadBoard(Church *c[]){
             count++;
         }
 
-        printf("=> 로딩 성공!");
+        printf(">> 로딩에 성공했습니다! 이어서 기록을 시작합니다.");
     }
 
     return count;
