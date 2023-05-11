@@ -9,7 +9,7 @@ typedef struct{
     char address[50];
     char time[10];
 
-    int count;
+    int att;
     int isSun;
 } Church;
 
@@ -23,8 +23,8 @@ int updateBoard(Church *c); //Update
 int deleteBoard(Church *c); //Delete
 void searchBoard(Church **c, int count);
 
-void saveBoard(Church **c, int count);
-int loadBoard(Church **c);
+void saveBoard(Church *c[], int count);
+int loadBoard(Church *c[]);
 
 int attendance();
 void thisWeek();

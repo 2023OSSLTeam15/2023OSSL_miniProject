@@ -31,7 +31,7 @@ int addBoard(Church *c){
 
 void listBoard(Church *c[], int count){
     printf("\nNo   Name   Address \t time\n");
-    printf("=====================================\n);
+    printf("=====================================\n");
     for(int i=0; i<count; i++){
         if(c[i]==NULL) continue;
         printf("%2d ", i+1);
@@ -63,7 +63,12 @@ int updateBoard(Church *c){
     return 1;
 }
 
-int deleteBoard(Church *c){}
+int deleteBoard(Church *c){
+    c->att = -1;
+    strcpy(c->name, "");
+
+    printf("=> 삭제되었습니다!\n");
+}
 
 void searchBoard(Church **c, int count){
     int scnt = 0;
@@ -73,10 +78,13 @@ void searchBoard(Church **c, int count){
     scanf("%s", search);
     
     printf("\nNo   Name   Address \t time\n");
-    printf("=====================================\n);
+    printf("=====================================\n");
     for(int i=0; i<count; i++){
         if(c[i] == NULL) continue;
         if(strstr(c[i]->name, search)){
+
+
+            
             printf("%2d ", i+1);
             readBoard(*c[i]);
             scnt++;
@@ -88,9 +96,62 @@ void searchBoard(Church **c, int count){
 
 
 
-void saveBoard(Church **c, int count){}
+void saveBoard(Church *c[], int count){
+    FILE *fp;
 
-int loadBoard(Church **c){}
+    fp = fopen("church.txt", "w+");
+
+    for (int i=0; i<count; i++){
+        if (c[i]->att == -1){
+            continue;
+        }
+        else{
+            fprintf(fp, "%s\t%s\t%s\t%d\n", c[i]->name, c[i]->address, c[i]->time, c[i]->att);
+        }
+    }
+
+    fclose(fp);
+    printf("=> 저장됨!");  
+}
+
+int loadBoard(Church *c[]){
+    FILE *fp;
+    char input[100];
+    char *split;
+    int count = 0;
+
+    fp = fopen("score.txt", "r");
+
+    if (fp == NULL){
+        printf(">> 저장된 파일이 없습니다.\n");
+    }
+    else{
+        while(fgets(input, 100, fp) != NULL){
+            c[count] = (Church*)malloc(sizeof(Church));
+
+            split = strtok(input, "\t");
+            strcpy(c[count]->name, split);
+
+            split = strtok(NULL, "\t");
+            strcpy(c[count]->address, split);
+
+            split = strtok(NULL, "\t");
+            strcpy(c[count]->time, split);
+
+            split = strtok(NULL, "\t");
+            c[count]->att = atoi(split);
+
+            if(feof(fp))
+                break;
+
+            count++;
+        }
+
+        printf("=> 로딩 성공!");
+    }
+
+    return count;
+}
 
 
 

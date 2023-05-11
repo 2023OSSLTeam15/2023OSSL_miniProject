@@ -18,11 +18,11 @@ int main(void){
             // 조건문으로 종료 처리
             scanf("%d", &exitok);
             if(exitok==1){
-                printf("프로그램 종료!\n");
+                printf("프로그램을 종료합니다!\n");
                 break;
             }
             else{
-                printf("취소됨!\n");
+                printf("프로그램 종료가 취소되었습니다!\n");
                 continue;
             }
         }
