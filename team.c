@@ -9,8 +9,8 @@ int selectMenu(){
     printf("4. 목록 삭제\n");
     printf("5. 파일 저장\n");
     printf("6. 교회 검색\n");
-    printf("7. 이번 주 교회 출석 현황\n");
-    printf("8. 이번 달 교회 출석 현황\n");
+    printf("7. 최근 교회 출석 현황\n");
+    printf("8. 최근 4주 교회 출석 현황\n");
     printf("9. 오늘의 추천 교회는?\n");
     printf("10. 출석 체크!");
     printf("0. 종료\n\n");
@@ -198,7 +198,9 @@ int attendance(Church *c[], int count){
     }
 }
 
-void thisWeek(){}
+void thisWeek(){
+
+}
 
 void thisMonth(){}
 
