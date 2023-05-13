@@ -12,7 +12,7 @@ int selectMenu(){
     printf("7. 최근 교회 출석 현황\n");
     printf("8. 최근 4주 교회 출석 현황\n");
     printf("9. 오늘의 추천 교회는?\n");
-    printf("10. 출석 체크!");
+    printf("10. 출석 체크!\n");
     printf("0. 종료\n\n");
     printf(">> 원하는 메뉴를 골라주세요:  ");
     scanf("%d", &menu);
@@ -182,7 +182,7 @@ int attendance(Church *c[], int count){
     scanf("%d", &number);
 
     if (number == 0){
-        return;
+        return 1;
     }
     else{
         printf("정말로 이 교회가 맞나요? (확인: 1 | 취소: 0)");
@@ -193,7 +193,7 @@ int attendance(Church *c[], int count){
             printf(">> 저장되었습니다!\n");
         }
         else{
-            return;
+            return 1;
         }
     }
 }
@@ -204,29 +204,6 @@ void thisWeek(){
 
 void thisMonth(){}
 
-int isSunday(){
-    time_t now;
-   struct tm *tm_now; // 변환된 시간 정보를 저장할 구조체
-   
-   // 현재 시간 구하기
-   time(&now);
-   
-   // 현재 시간 정보 구조체로 변환
-   tm_now = localtime(&now);
-   
-   // 현재 시간 출력
-   printf("현재 시간은 %d년 %d월 %d일 %d시 %d분입니다.\n",
-          tm_now->tm_year + 1900, tm_now->tm_mon + 1, tm_now->tm_mday,
-          tm_now->tm_hour, tm_now->tm_min);
-
-    if (tm_now->tm_wday == 0) {
-      printf("오늘은 일요일입니다.\n");
-      return 1;
-    }
-    else {
-      printf("오늘은 날짜는 일요일이 아닙니다.\n이 메뉴는 일요일에만 활성화됩니다.\n감사합니다.\n");
-      return 0;
-    }
-}
+int isSunday(){}
 
 void recommendChurch(Church *c[], int count){}
