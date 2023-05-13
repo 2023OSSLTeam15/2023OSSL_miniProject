@@ -23,7 +23,7 @@ void listBoard(Church *c[], int count); //Read
 void readBoard(Church c);
 int selectDataNo(Church *c[], int count);   //Selecting number (for Update, Delete)
 int updateBoard(Church *c); //Update
-void deleteBoard(Church *c, int count); 
+void deleteBoard(Church *c[], int count); //Delete
 void searchBoard(Church **c, int count);
 
 void saveBoard(Church *c[], int count);
