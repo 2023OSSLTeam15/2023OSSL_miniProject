@@ -10,7 +10,7 @@ typedef struct{
     char address[50];
     char time[10];
 
-    int date [2];
+    int date [3];
 
     int att;
     int isSun;

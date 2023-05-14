@@ -178,6 +178,15 @@ int loadBoard(Church *c[]){
 int attendance(Church *c[], int count){
     if (isSun()==1){
         int number, aNumber;
+        time_t now;
+        struct tm *tm_now; // 변환된 시간 정보를 저장할 구조체
+
+        time(&now);// 현재 시간 구하기
+        tm_now = localtime(&now);// 현재 시간 정보 구조체로 변환
+
+        c[number-1]->date[0] = tm_now->tm_mon + 1;
+        c[number-1]->date[1] = tm_now->tm_mday;
+        c[number-1]->date[2] = c[number - 1]->att;
 
         listBoard(c, count);
         printf("출석 체크할 교회의 번호를 입력해 주세요. (취소: 0) ");
@@ -216,13 +225,9 @@ int isSunday(){
     time_t now;
     struct tm *tm_now; // 변환된 시간 정보를 저장할 구조체
 
-    // 현재 시간 구하기
-    time(&now);
+    time(&now);// 현재 시간 구하기
+    tm_now = localtime(&now);// 현재 시간 정보 구조체로 변환
 
-    // 현재 시간 정보 구조체로 변환
-    tm_now = localtime(&now);
-
-    // 현재 시간 출력
     printf("현재 시간은 %d년 %d월 %d일 %d시 %d분입니다.\n",
             tm_now->tm_year + 1900, tm_now->tm_mon + 1, tm_now->tm_mday,
             tm_now->tm_hour, tm_now->tm_min);
