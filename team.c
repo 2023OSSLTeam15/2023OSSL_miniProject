@@ -27,6 +27,7 @@ int addBoard(Church *c){
     printf("청년부 예배 시간은(00:00 형태로 표기)?  ");
     scanf("%s", c->time);
     printf("=> 추가됨!\n\n");
+
     return 1;
 }
 
@@ -175,26 +176,31 @@ int loadBoard(Church *c[]){
 
 
 int attendance(Church *c[], int count){
-    int number, aNumber;
+    if (isSun()==1){
+        int number, aNumber;
 
-    listBoard(c, count);
-    printf("출석 체크할 교회의 번호를 입력해 주세요. (취소: 0) ");
-    scanf("%d", &number);
+        listBoard(c, count);
+        printf("출석 체크할 교회의 번호를 입력해 주세요. (취소: 0) ");
+        scanf("%d", &number);
 
-    if (number == 0){
-        return 1;
-    }
-    else{
-        printf("정말로 이 교회가 맞나요? (확인: 1 | 취소: 0)");
-        scanf("%d", &aNumber);
-
-        if (aNumber==1){
-            c[number - 1]->att++;
-            printf(">> 저장되었습니다!\n");
-        }
-        else{
+        if (number == 0){
             return 1;
         }
+        else{
+            printf("정말로 이 교회가 맞나요? (확인: 1 | 취소: 0)");
+            scanf("%d", &aNumber);
+
+            if (aNumber==1){
+                c[number - 1]->att++;
+                printf(">> 저장되었습니다!\n");
+            }
+            else{
+                return 1;
+            }
+        }
+    }
+    else{
+        return 1;
     }
 }
 
