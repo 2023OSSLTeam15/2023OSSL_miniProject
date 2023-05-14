@@ -206,4 +206,15 @@ void thisMonth(){}
 
 int isSunday(){}
 
-void recommendChurch(Church *c[], int count){}
+void recommendChurch(Church *c[], int count){
+    int num;
+
+    // 현재 시간을 시드값으로 사용하여 랜덤 시퀀스 초기화
+    srand(time(NULL));
+
+    // 0부터 count-1까지의 난수 생성
+    num = rand() % count;
+    printf("오늘의 추천 교회는 %s입니다. 알찬 주일 보내시길 바랍니다!", c[num]->name);
+
+    return 0;
+}
