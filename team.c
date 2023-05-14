@@ -203,23 +203,23 @@ void thisWeek(Church *c[], int count){
 }
 
 void thisMonth(Church *c[], int count){
-    
+
 }
 
 int isSunday(){
     time_t now;
-   struct tm *tm_now; // 변환된 시간 정보를 저장할 구조체
+    struct tm *tm_now; // 변환된 시간 정보를 저장할 구조체
 
-   // 현재 시간 구하기
-   time(&now);
+    // 현재 시간 구하기
+    time(&now);
 
-   // 현재 시간 정보 구조체로 변환
-   tm_now = localtime(&now);
+    // 현재 시간 정보 구조체로 변환
+    tm_now = localtime(&now);
 
-   // 현재 시간 출력
-   printf("현재 시간은 %d년 %d월 %d일 %d시 %d분입니다.\n",
-          tm_now->tm_year + 1900, tm_now->tm_mon + 1, tm_now->tm_mday,
-          tm_now->tm_hour, tm_now->tm_min);
+    // 현재 시간 출력
+    printf("현재 시간은 %d년 %d월 %d일 %d시 %d분입니다.\n",
+            tm_now->tm_year + 1900, tm_now->tm_mon + 1, tm_now->tm_mday,
+            tm_now->tm_hour, tm_now->tm_min);
 
     if (tm_now->tm_wday == 0) {
       printf("오늘은 일요일입니다.\n");
