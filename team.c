@@ -64,7 +64,7 @@ int updateBoard(Church *c){
     return 1;
 }
 
-void deleteBoard(Church *c[], int count){
+void deleteBoard(Church **c, int count){
     int number, aNumber;
 
     listBoard(c, count);
