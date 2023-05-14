@@ -52,7 +52,9 @@ int main(void){
         }
         else if (menu == 7){}
         else if (menu == 8){}
-        else if (menu == 9){}
+        else if (menu == 9){
+            recommendChurch(c, count);
+        }
         else if (menu == 10){
             attendance(c, count);
         }
