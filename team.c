@@ -198,11 +198,13 @@ int attendance(Church *c[], int count){
     }
 }
 
-void thisWeek(){
+void thisWeek(Church *c[], int count){
 
 }
 
-void thisMonth(){}
+void thisMonth(Church *c[], int count){
+    
+}
 
 int isSunday(){
     time_t now;

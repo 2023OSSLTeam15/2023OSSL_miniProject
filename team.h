@@ -30,7 +30,7 @@ void saveBoard(Church *c[], int count);
 int loadBoard(Church *c[]);
 
 int attendance(Church *c[], int count);
-void thisWeek();
-void thisMonth();
+void thisWeek(Church *c[], int count);
+void thisMonth(Church *c[], int count);
 int isSunday();
 void recommendChurch(Church *c[], int count);
