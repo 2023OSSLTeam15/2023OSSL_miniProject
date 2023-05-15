@@ -176,6 +176,7 @@ int loadBoard(Church *c[]){
 
 
 int attendance(Church *c[], int count){
+    
     if (isSun()){
         int number, aNumber;
         time_t now;

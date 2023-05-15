@@ -3,15 +3,13 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define max 100
+#define MAX 100
 
 typedef struct{
     char name[50];
     char address[50];
     char time[10];
-
     int date [3];
-
     int att;
     int isSun;
 } Church;
