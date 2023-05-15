@@ -9,7 +9,7 @@ int selectMenu(){
     printf("4. 목록 삭제\n");
     printf("5. 파일 저장\n");
     printf("6. 교회 검색\n");
-    printf("7. 최근 교회 출석 현황\n");
+    printf("7. 이번주 교회 출석 현황\n");
     printf("8. 최근 4주 교회 출석 현황\n");
     printf("9. 오늘의 추천 교회는?\n");
     printf("10. 출석 체크!\n");
@@ -176,17 +176,13 @@ int loadBoard(Church *c[]){
 
 
 int attendance(Church *c[], int count){
-    if (isSun()==1){
+    if (isSun()){
         int number, aNumber;
         time_t now;
         struct tm *tm_now; // 변환된 시간 정보를 저장할 구조체
 
         time(&now);// 현재 시간 구하기
         tm_now = localtime(&now);// 현재 시간 정보 구조체로 변환
-
-        c[number-1]->date[0] = tm_now->tm_mon + 1;
-        c[number-1]->date[1] = tm_now->tm_mday;
-        c[number-1]->date[2] = c[number - 1]->att;
 
         listBoard(c, count);
         printf("출석 체크할 교회의 번호를 입력해 주세요. (취소: 0) ");
@@ -201,6 +197,9 @@ int attendance(Church *c[], int count){
 
             if (aNumber==1){
                 c[number - 1]->att++;
+                c[number-1]->date[0] = tm_now->tm_mon + 1;
+                c[number-1]->date[1] = tm_now->tm_mday;
+                c[number-1]->date[2] = c[number - 1]->att;
                 printf(">> 저장되었습니다!\n");
             }
             else{
@@ -214,7 +213,7 @@ int attendance(Church *c[], int count){
 }
 
 void thisWeek(Church *c[], int count){
-
+    printf("이번주");
 }
 
 void thisMonth(Church *c[], int count){
@@ -228,7 +227,7 @@ int isSunday(){
     time(&now);// 현재 시간 구하기
     tm_now = localtime(&now);// 현재 시간 정보 구조체로 변환
 
-    printf("현재 시간은 %d년 %d월 %d일 %d시 %d분입니다.\n",
+    printf("[%d년 %d월 %d일 %d시 %d분]\n",
             tm_now->tm_year + 1900, tm_now->tm_mon + 1, tm_now->tm_mday,
             tm_now->tm_hour, tm_now->tm_min);
 
@@ -237,7 +236,7 @@ int isSunday(){
       return 1;
     }
     else {
-      printf("오늘은 날짜는 일요일이 아닙니다.\n이 메뉴는 일요일에만 활성화됩니다.\n감사합니다.\n");
+      printf("오늘은 일요일이 아닙니다.\n이 메뉴는 일요일에만 활성화됩니다.\n감사합니다.\n");
       return 0;
     }
 }
@@ -245,11 +244,8 @@ int isSunday(){
 void recommendChurch(Church *c[], int count){
     int num;
 
-    // 현재 시간을 시드값으로 사용하여 랜덤 시퀀스 초기화
-    srand(time(NULL));
-
-    // 0부터 count-1까지의 난수 생성
-    num = rand() % count;
+    srand(time(NULL)); // 현재 시간을 시드값으로 사용하여 랜덤 시퀀스 초기화
+    num = rand() % count; // 0부터 count-1까지의 난수 생성
     printf("오늘의 추천 교회는 %s입니다. 알찬 주일 보내시길 바랍니다!", c[num]->name);
 
     return 0;
