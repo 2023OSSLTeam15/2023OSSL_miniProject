@@ -209,12 +209,29 @@ int attendance(Church *c[], int count){
     }
 }
 
-void thisWeek(Church *c[], int count){
-    printf("이번주");
+void thisWeek(Church *c[], History *h, int count, int *Hcount){
+    printf("*** 이번주 교회 출석 현황 ***\n");
+
+    listBoard(h[*Hcount].churches,  h[*Hcount].Ccount);
 }
 
-void thisMonth(Church *c[], int count){
+void thisMonth(Church *c[], History *h, int count, int *Hcount){
+    int four = *Hcount - 4;
 
+    printf("*** 최근 4주 교회 출석 현황 ***\n");
+
+    if (four < 0){
+        for (int i = 0; i < 4 - four; i++){
+            prinf("** %d **\n",*Hcount - i);
+            listBoard(h[*Hcount - i].churches,  h[*Hcount - 1].Ccount);
+        }
+    }
+    else{
+        for (int i = 0; i < 4; i++){
+            prinf("** %d **\n",*Hcount - i);
+            listBoard(h[*Hcount - i].churches,  h[*Hcount - 1].Ccount);
+        }
+    }
 }
 
 int isSunday(){
@@ -248,7 +265,7 @@ void recommendChurch(Church *c[], int count){
     return 0;
 }
 
-int weeklyRecord(Church *c[], History *h, int count, int *Hcount) {
+void weeklyRecord(Church *c[], History *h, int count, int *Hcount) {
     FILE *fp;
     char input[100];
     char *split;
@@ -278,11 +295,11 @@ int weeklyRecord(Church *c[], History *h, int count, int *Hcount) {
             if(feof(fp))
                 break;
 
-            Cnum++;
+            Cnum++; //함수 타입 수정할 거야
         }
 
         printf(">> 저장했습니다!");
     }
-
-    return Cnum;
+    h[*Hcount-1].Ccount = Cnum;
+    *Hcount++;
 }
