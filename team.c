@@ -140,7 +140,7 @@ int loadBoard(Church *c[]){
     char *split;
     int count = 0;
 
-    fp = fopen("score.txt", "r");
+    fp = fopen("church.txt", "r");
 
     if (fp == NULL){
         printf(">> 저장된 파일이 없습니다. 지금부터 기록을 시작합니다.\n");
@@ -176,7 +176,6 @@ int loadBoard(Church *c[]){
 
 
 int attendance(Church *c[], int count){
-    
     if (isSun()){
         int number, aNumber;
         time_t now;
@@ -198,9 +197,6 @@ int attendance(Church *c[], int count){
 
             if (aNumber==1){
                 c[number - 1]->att++;
-                c[number-1]->date[0] = tm_now->tm_mon + 1;
-                c[number-1]->date[1] = tm_now->tm_mday;
-                c[number-1]->date[2] = c[number - 1]->att;
                 printf(">> 저장되었습니다!\n");
             }
             else{
@@ -250,4 +246,43 @@ void recommendChurch(Church *c[], int count){
     printf("오늘의 추천 교회는 %s입니다. 알찬 주일 보내시길 바랍니다!", c[num]->name);
 
     return 0;
+}
+
+int weeklyRecord(Church *c[], History *h, int count, int *Hcount) {
+    FILE *fp;
+    char input[100];
+    char *split;
+    int Cnum = 0;
+
+    fp = fopen("church.txt", "r");
+
+    if (fp == NULL){
+        printf(">> 저장된 파일이 없습니다.\n");
+       }
+    else{
+        while(fgets(input, 100, fp) != NULL){
+            h[*Hcount].churches[Cnum] = (Church *)malloc(sizeof(Church));
+
+            split = strtok(input, "\t");
+            strcpy(h[*Hcount-1].churches[Cnum]->name, split);
+
+            split = strtok(NULL, "\t");
+            strcpy(h[*Hcount-1].churches[Cnum]->address, split);
+
+            split = strtok(NULL, "\t");
+            strcpy(h[*Hcount-1].churches[Cnum]->time, split);
+
+            split = strtok(NULL, "\t");
+            h[*Hcount-1].churches[Cnum]->att = atoi(split);
+
+            if(feof(fp))
+                break;
+
+            Cnum++;
+        }
+
+        printf(">> 저장했습니다!");
+    }
+
+    return Cnum;
 }

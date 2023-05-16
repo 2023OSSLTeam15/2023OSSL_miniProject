@@ -9,10 +9,13 @@ typedef struct{
     char name[50];
     char address[50];
     char time[10];
-    int date [3];
     int att;
-    int isSun;
-} Church;
+}Church;
+
+typedef struct{
+    Church *churches[MAX];
+    int date[2];
+}History;
 
 int selectMenu();
 
@@ -32,3 +35,5 @@ void thisWeek(Church *c[], int count);
 void thisMonth(Church *c[], int count);
 int isSunday();
 void recommendChurch(Church *c[], int count);
+
+int weeklyRecord(Church *c[], History *h, int count, int *Hcount);
