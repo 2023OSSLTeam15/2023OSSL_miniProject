@@ -51,8 +51,12 @@ int main(void){
         else if (menu == 6){
             searchBoard(c, index);
         }
-        else if (menu == 7){}
-        else if (menu == 8){}
+        else if (menu == 7){
+            thisWeek();
+        }
+        else if (menu == 8){
+            thisMonth();
+        }
         else if (menu == 9){
             recommendChurch(c, count);
         }
