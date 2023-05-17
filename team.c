@@ -7,33 +7,33 @@ int selectMenu(){
     printf("2. 목록 추가\n");
     printf("3. 목록 수정\n");
     printf("4. 목록 삭제\n");
-    printf("5. 파일 저장\n");
-    printf("6. 교회 검색\n");
+    printf("5. 목록 저장\n");
+    printf("6. 목록 검색\n");
     printf("7. 이번주 교회 출석 현황\n");
     printf("8. 최근 4주 교회 출석 현황\n");
-    printf("9. 오늘의 추천 교회는?\n");
-    printf("10. 출석 체크!\n");
-    printf("0. 종료\n\n");
+    printf("9. 오늘의 추천 교회는? 랜덤 게임!\n");
+    printf("10. 출석 체크\n");
+    printf("0. 프로그램 종료\n\n");
     printf(">> 원하는 메뉴를 골라주세요:  ");
     scanf("%d", &menu);
     return menu;
 }
 
 int addBoard(Church *c){
-    printf("교회 이름은?  ");
+    printf("교회 이름:  ");
     scanf("%s", c->name);
-    printf("교회 주소는?  ");
+    printf("교회 주소:  ");
     scanf("%s", c->address);
-    printf("청년부 예배 시간은(00:00 형태로 표기)?  ");
+    printf("청년부 예배 시간(ex. 00:00):  ");
     scanf("%s", c->time);
-    printf("=> 추가됨!\n\n");
+    printf(">> 추가되었습니다!\n\n");
 
     return 1;
 }
 
 void listBoard(Church *c[], int count){
-    printf("\nNo   Name   Address \t time\n");
-    printf("=====================================\n");
+    printf("\nNo   Name   Address \t time   attendance\n");
+    printf("===============================================\n");
     for(int i=0; i<count; i++){
         if(c[i]==NULL) continue;
         printf("%2d ", i+1);
@@ -43,25 +43,25 @@ void listBoard(Church *c[], int count){
 }
 
 void readBoard(Church c){
-    printf(" %s  %s \t %s\n", c.name, c.address, c.time);
+    printf(" %s  %s \t %s   %d\n", c.name, c.address, c.time, c.att);
 }
 
 int selectDataNo(Church *c[], int count){
     int no;
     listBoard(c, count);
-    printf("번호는 (취소: 0)? ");
+    printf("번호(취소: 0): ");
     scanf("%d", &no);
     return no;
 }
 
 int updateBoard(Church *c){
-    printf("교회 이름은?  ");
+    printf("교회 이름:  ");
     scanf("%s", c->name);
-    printf("교회 주소는?  ");
+    printf("교회 주소:  ");
     scanf("%s", c->address);
-    printf("청년부 예배 시간은(00:00 형태로 표기)?  ");
+    printf("청년부 예배 시간(00:00 형태로 표기):  ");
     scanf("%s", c->time);
-    printf("=> 수정됨!\n");
+    printf(">> 수정이 완료되었습니다!\n");
     return 1;
 }
 
@@ -69,14 +69,14 @@ void deleteBoard(Church **c, int count){
     int number, aNumber;
 
     listBoard(c, count);
-    printf("삭제할 리스트의 번호를 알려주세요. (취소: 0) ");
+    printf("삭제할 리스트의 번호를 알려주세요. (취소: 0):  ");
     scanf("%d", &number);
 
     if (number == 0){
         return;
     }
     else{
-        printf("정말로 삭제하시겠습니까? (삭제: 1 | 취소: 0)");
+        printf("정말로 삭제하시겠습니까? (삭제: 1 | 취소: 0):  ");
         scanf("%d", &aNumber);
 
         if (aNumber==1){
@@ -94,11 +94,11 @@ void searchBoard(Church **c, int count){
     int scnt = 0;
     char search[50];
     
-    printf("검색할 교회 이름?  ");
+    printf("검색할 교회 이름:  ");
     scanf("%s", search);
     
-    printf("\nNo   Name   Address \t time\n");
-    printf("=====================================\n");
+    printf("\nNo   Name   Address \t time   attendance\n");
+    printf("===============================================\n");
     for(int i=0; i<count; i++){
         if(c[i] == NULL) continue;
         if(strstr(c[i]->name, search)){
@@ -110,7 +110,7 @@ void searchBoard(Church **c, int count){
             scnt++;
         }
     }
-    if(scnt == 0) printf("=> 검색된 데이터 없음!");
+    if(scnt == 0) printf(">> 검색된 데이터 없음!");
     printf("\n");
 }
 
@@ -216,7 +216,7 @@ void thisWeek(Church *c[], History *h, int count, int *Hcount){
 }
 
 void thisMonth(Church *c[], History *h, int count, int *Hcount){
-    int four = *Hcount - 4;
+    int four = *Hcount - 4; // 만약 프로그램이 4주 미만의 데이터를 가지고 있을 때 사용할 변수
 
     printf("*** 최근 4주 교회 출석 현황 ***\n");
 
@@ -274,7 +274,7 @@ void weeklyRecord(Church *c[], History *h, int count, int *Hcount) {
     fp = fopen("church.txt", "r");
 
     if (fp == NULL){
-        printf(">> 저장된 파일이 없습니다.\n");
+        printf(">> 아직 저장된 파일이 없습니다.\n");
        }
     else{
         while(fgets(input, 100, fp) != NULL){
@@ -295,7 +295,7 @@ void weeklyRecord(Church *c[], History *h, int count, int *Hcount) {
             if(feof(fp))
                 break;
 
-            Cnum++; //함수 타입 수정할 거야
+            Cnum++; //수정 완료
         }
 
         printf(">> 저장했습니다!");
