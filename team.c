@@ -260,7 +260,9 @@ void recommendChurch(Church *c[], int count){
 
     srand(time(NULL)); // 현재 시간을 시드값으로 사용하여 랜덤 시퀀스 초기화
     num = rand() % count; // 0부터 count-1까지의 난수 생성
-    printf("오늘의 추천 교회는 %s입니다. 알찬 주일 보내시길 바랍니다!", c[num]->name);
+    printf("오늘의 추천 교회는? (두구두구~)");
+    printf("*\n*\n*\n*\n*\n");
+    printf("%s입니다! 알찬 주일 보내시길 바랍니다!", c[num]->name);
 
     return 0;
 }
