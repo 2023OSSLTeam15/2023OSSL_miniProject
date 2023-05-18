@@ -8,6 +8,7 @@ int main(void){
     int menu;
     
     count = loadBoard(c);
+    
     index = count;
 
     while (1){
