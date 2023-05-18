@@ -176,7 +176,7 @@ int loadBoard(Church *c[]){
 
 
 int attendance(Church *c[], int count){
-    if (isSun()){
+    if (isSunday()){
         int number, aNumber;
         time_t now;
         struct tm *tm_now; // 변환된 시간 정보를 저장할 구조체
@@ -222,13 +222,13 @@ void thisMonth(Church *c[], History *h, int count, int *Hcount){
 
     if (four < 0){
         for (int i = 0; i < 4 - four; i++){
-            prinf("** %d **\n",*Hcount - i);
+            printf("** %d **\n",*Hcount - i);
             listBoard(h[*Hcount - i].churches,  h[*Hcount - 1].Ccount);
         }
     }
     else{
         for (int i = 0; i < 4; i++){
-            prinf("** %d **\n",*Hcount - i);
+            printf("** %d **\n",*Hcount - i);
             listBoard(h[*Hcount - i].churches,  h[*Hcount - 1].Ccount);
         }
     }
@@ -263,8 +263,6 @@ void recommendChurch(Church *c[], int count){
     printf("오늘의 추천 교회는? (두구두구~)");
     printf("*\n*\n*\n*\n*\n");
     printf("%s입니다! 알찬 주일 보내시길 바랍니다!", c[num]->name);
-
-    return 0;
 }
 
 void weeklyRecord(Church *c[], History *h, int count, int *Hcount) {
