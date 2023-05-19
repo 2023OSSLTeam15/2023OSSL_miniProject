@@ -26,6 +26,7 @@ int addBoard(Church *c){
     scanf("%s", c->address);
     printf("청년부 예배 시간(ex. 00:00):  ");
     scanf("%s", c->time);
+    c->att = 0;
     printf(">> 추가되었습니다!\n\n");
 
     return 1;
@@ -35,7 +36,7 @@ void listBoard(Church *c[], int count){
     printf("\nNo   Name   Address \t time   attendance\n");
     printf("===============================================\n");
     for(int i=0; i<count; i++){
-        if(c[i]==NULL) continue;
+        if(c[i]->att == -1) continue;
         printf("%2d ", i+1);
         readBoard(*c[i]);
     }

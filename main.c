@@ -3,12 +3,11 @@
 int main(void){
     Church *c[MAX];
     History h[MAX];
-    int count = 0, *Hcount = 0;
+    int count = 0, *Hcount = 0; 
     int index = 0;
     int menu;
     
-    count = loadBoard(c);
-    
+    //count = loadBoard(c);
     index = count;
 
     while (1){
