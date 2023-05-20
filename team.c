@@ -144,7 +144,7 @@ int loadBoard(Church *c[]){
     fp = fopen("church.txt", "r");
 
     if (fp == NULL){
-        printf(">> 저장된 파일이 없습니다. 지금부터 기록을 시작합니다.\n");
+        return -1;
     }
     else{
         while(fgets(input, 100, fp) != NULL){
@@ -166,18 +166,16 @@ int loadBoard(Church *c[]){
                 break;
 
             count++;
+            return count;
         }
-
-        printf(">> 로딩에 성공했습니다! 이어서 기록을 시작합니다.");
     }
-
-    return count;
 }
 
 
 
 int attendance(Church *c[], int count){
-    if (isSunday()){
+    int ss = isSunday();
+    if (ss == 1){
         int number, aNumber;
         time_t now;
         struct tm *tm_now; // 변환된 시간 정보를 저장할 구조체

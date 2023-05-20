@@ -7,10 +7,17 @@ int main(void){
     int index = 0;
     int menu;
     
-    //count = loadBoard(c);
+    count = loadBoard(c);
+    if (count == -1){
+        printf(">> 저장된 파일이 없습니다. 지금부터 기록을 시작합니다.\n");
+    }
+    else{
+        printf(">> 로딩에 성공했습니다! 이어서 기록을 시작합니다.");
+    }
     index = count;
 
     while (1){
+        count = loadBoard(c);
         menu = selectMenu();
         if (menu == 0){
             int exitok;
@@ -33,6 +40,7 @@ int main(void){
         else if (menu == 2){
             c[index] = (Church *)malloc(sizeof(Church));
             count += addBoard(c[index++]);
+            saveBoard(c, count);
         }
         else if (menu == 3){
             int no = selectDataNo(c, index);
@@ -41,9 +49,11 @@ int main(void){
                 continue;
             }
             updateBoard(c[no-1]);
+            saveBoard(c, count);
         }
         else if (menu == 4){
             deleteBoard(c, count);
+            saveBoard(c, count);
         }
         else if (menu == 5){
             saveBoard(c, count);
