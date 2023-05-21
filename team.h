@@ -14,7 +14,7 @@ typedef struct{
 
 typedef struct{
     Church *churches[MAX];
-    int date[2];
+    int date[3];
     int Ccount;
 }History;
 
@@ -32,9 +32,9 @@ void saveBoard(Church *c[], int count);
 int loadBoard(Church *c[]);
 
 int attendance(Church *c[], int count);
-void thisWeek(Church *c[], History *h, int count, int *Hcount);
-void thisMonth(Church *c[], History *h, int count, int *Hcount);
+void thisWeek(Church *c[], History *h, int count, int Hcount);
+void thisMonth(Church *c[], History *h, int count, int Hcount);
 int isSunday();
 void recommendChurch(Church *c[], int count);
 
-void weeklyRecord(Church *c[], History *h, int count, int *Hcount);
+int weeklyRecord(Church *c[], int count, History *h, int Hcount, int year, int month, int day);
