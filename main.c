@@ -17,7 +17,6 @@ int main(void){
     index = count;
 
     while (1){
-        count = loadBoard(c);
         menu = selectMenu();
         if (menu == 0){
             int exitok;
@@ -39,7 +38,7 @@ int main(void){
         }
         else if (menu == 2){
             c[index] = (Church *)malloc(sizeof(Church));
-            count += addBoard(c[index++]);
+            count ++;
             saveBoard(c, count);
         }
         else if (menu == 3){
@@ -54,6 +53,8 @@ int main(void){
         else if (menu == 4){
             deleteBoard(c, count);
             saveBoard(c, count);
+            count = loadBoard(c);
+            printf("\n\n%d 입니다", count);
         }
         else if (menu == 5){
             saveBoard(c, count);

@@ -147,7 +147,8 @@ int loadBoard(Church *c[]){
         return -1;
     }
     else{
-        while(fgets(input, 100, fp) != NULL){
+        while(!feof){
+            fgets(input, 100, fp);
             c[count] = (Church*)malloc(sizeof(Church));
 
             split = strtok(input, "\t");
@@ -166,8 +167,8 @@ int loadBoard(Church *c[]){
                 break;
 
             count++;
-            return count;
         }
+        return count;
     }
 }
 
