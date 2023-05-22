@@ -1,4 +1,4 @@
-#include "team2.h"
+#include "team.h"
 
 int selectMenu(){
     int menu;
@@ -9,7 +9,7 @@ int selectMenu(){
     printf("4. 목록 삭제\n");
     printf("5. 목록 저장\n");
     printf("6. 목록 검색\n");
-    printf("7. 이번주 교회 출석 현황\n");
+    printf("7. 최근 교회 출석 현황\n");
     printf("8. 최근 4주 교회 출석 현황\n");
     printf("9. 오늘의 추천 교회는? 랜덤 게임!\n");
     printf("10. 출석 체크\n");
@@ -125,7 +125,7 @@ void saveBoard(Church *c[], int count){
     }
 
     fclose(fp);
-    printf(">> 저장되었습니다!");  
+    printf(">> 저장 완료!\n");  
 }
 
 int loadBoard(Church *c[]){
@@ -155,9 +155,9 @@ int loadBoard(Church *c[]){
                 break;
 
             count++;
-            printf("저장된 파일을 불러왔습니다.\n");
         }
-     return count;
+        printf("저장된 파일을 불러왔습니다.\n");
+        return count;
     }
 }
 
@@ -197,26 +197,36 @@ int attendance(Church *c[], int count){
 }
 
 void thisWeek(Church *c[], History *h, int count, int Hcount){
-    printf("*** 이번주 교회 출석 현황 ***\n");
+    if (Hcount == 0){
+        printf("아직 아무도 출석 체크를 진행하지 않았습니다.\n다가오는 일요일, 처음으로 출석 체크를 시도해 보세요!\n");
+    }
+    else{
+        printf("*** 이번주 교회 출석 현황 ***\n");
 
-    listBoard(h[Hcount-1].churches,  h[Hcount-1].Ccount);
+        listBoard(h[Hcount-1].churches,  h[Hcount-1].Ccount);
+    }
 }
 
 void thisMonth(Church *c[], History *h, int count, int Hcount){
-    int four = Hcount - 4; // 만약 프로그램이 4주 미만의 데이터를 가지고 있을 때 사용할 변수
-
-    printf("*** 최근 4주 교회 출석 현황 ***\n");
-
-    if (four < 0){
-        for (int i = 1; i <= 4 + four; i++){
-            printf("** %d **\n",Hcount);
-            listBoard(h[Hcount - i].churches,  h[Hcount - 1].Ccount);
-        }
+    if (Hcount == 0){
+        printf("아직 아무도 출석 체크를 진행하지 않았습니다.\n다가오는 일요일, 처음으로 출석 체크를 시도해 보세요!\n");
     }
     else{
-        for (int i = 1; i <= 4; i++){
-            printf("** %d **\n",Hcount);
-            listBoard(h[Hcount - i].churches,  h[Hcount - 1].Ccount);
+        int four = Hcount - 4; // 만약 프로그램이 4주 미만의 데이터를 가지고 있을 때 사용할 변수
+
+        printf("*** 최근 4주 교회 출석 현황 ***\n");
+
+        if (four < 0){
+            for (int i = 1; i <= 4 + four; i++){
+                printf("** %d **\n",Hcount);
+                listBoard(h[Hcount - i].churches,  h[Hcount - 1].Ccount);
+            }
+        }
+        else{
+            for (int i = 1; i <= 4; i++){
+                printf("** %d **\n",Hcount);
+                listBoard(h[Hcount - i].churches,  h[Hcount - 1].Ccount);
+            }
         }
     }
 }
@@ -233,7 +243,7 @@ int isSunday(){
             tm_now->tm_hour, tm_now->tm_min);
 
     if (tm_now->tm_wday == 0) {
-      printf("오늘은 일요일입니다.\n");
+      printf("오늘은 일요일입니다. 행복한 주일 되세요!\n");
       return 1;
     }
     else {
@@ -248,8 +258,8 @@ void recommendChurch(Church *c[], int count){
     srand(time(NULL)); // 현재 시간을 시드값으로 사용하여 랜덤 시퀀스 초기화
     num = rand() % count; // 0부터 count-1까지의 난수 생성
     printf("오늘의 추천 교회는? (두구두구~)");
-    printf("*\n*\n*\n*\n*\n");
-    printf("%s입니다! 알찬 주일 보내시길 바랍니다!", c[num]->name);
+    printf("*\n*\n*\n*\n*\n*\n*\n*\n*\n*\n");
+    printf("[ %s ]입니다! 알찬 주일 보내시길 바랍니다!\n", c[num]->name);
 }
 
 int weeklyRecord(Church *c[], int count, History *h, int Hcount, int year, int month, int day) {

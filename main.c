@@ -1,4 +1,4 @@
-#include "team2.h"
+#include "team.h"
 
 int main(void){
     time_t now;
@@ -26,6 +26,7 @@ int main(void){
             scanf("%d", &exitok);
             
             if(exitok == 1){
+                saveBoard(c, count);
                 printf("프로그램을 종료합니다!\n");
                 break;
             }
