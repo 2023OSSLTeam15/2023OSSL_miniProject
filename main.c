@@ -8,13 +8,14 @@ int main(void){
     tm_now = localtime(&now);// 현재 시간 정보 구조체로 변환
 
     Church *c[MAX];
-    History h[MAX];
+    History *h[4]; //4주의 기록만 저장함
     int Hcount = 0; 
     int count = 0;
     
     int menu;
 
     count = loadBoard(c);
+    Hcount = loadWBoard(h);
 
     while (1){
         menu = selectMenu();
@@ -62,16 +63,20 @@ int main(void){
             searchBoard(c, count);
         }
         else if (menu == 7){
-            thisWeek(c, h, count, Hcount);
+            printf("%d\n", Hcount);
+            thisWeek(h, Hcount);
         }
         else if (menu == 8){
-            thisMonth(c, h, count, Hcount);
+            printf("%d\n", Hcount);
+            thisMonth(h, Hcount);
         }
         else if (menu == 9){
             recommendChurch(c, count);
         }
         else if (menu == 10){
-            attendance(c, count);
+            if (attendance(c, count) == -1){
+                continue;
+            }
             Hcount = weeklyRecord(c, count, h, Hcount, tm_now->tm_year, tm_now->tm_mon, tm_now->tm_mday);
         }
     }

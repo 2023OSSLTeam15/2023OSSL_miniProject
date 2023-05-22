@@ -32,9 +32,10 @@ void saveBoard(Church *c[], int count);
 int loadBoard(Church *c[]);
 
 int attendance(Church *c[], int count);
-void thisWeek(Church *c[], History *h, int count, int Hcount);
-void thisMonth(Church *c[], History *h, int count, int Hcount);
+void thisWeek(History *h[], int Hcount);
+void thisMonth(History *h[], int Hcount);
 int isSunday();
 void recommendChurch(Church *c[], int count);
 
-int weeklyRecord(Church *c[], int count, History *h, int Hcount, int year, int month, int day);
+int weeklyRecord(Church *c[], int count, History *h[], int Hcount, int year, int month, int day);
+int loadWBoard(History *h[]);
