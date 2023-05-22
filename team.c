@@ -113,7 +113,7 @@ void searchBoard(Church **c, int count){
 void saveBoard(Church *c[], int count){
     FILE *fp;
 
-    fp = fopen("church2.txt", "w+");
+    fp = fopen("church.txt", "w+");
 
     for (int i=0; i<count; i++){
         if (c[i]->att == -1){
@@ -133,7 +133,7 @@ int loadBoard(Church *c[]){
     char input[100];
     char *split;
     int count = 0;
-    fp = fopen("church2.txt", "r");
+    fp = fopen("church.txt", "r");
 
     if (fp == NULL){
         printf("아직 저장된 파일이 없습니다.\n");
